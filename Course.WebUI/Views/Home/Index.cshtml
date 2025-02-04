@@ -1,8 +1,34 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!-- HERO SECTION -->
+<section class="hero">
+    <h1>Leon Courser - Learn & Grow!</h1>
+    <p>Find the best courses here. A modern learning platform designed for you.</p>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+@*     <!-- Scroll down arrow -->
+    <div class="scroll-down">
+        <a href="#sections">
+            <img src="~/images/down-arrow.png" alt="Scroll Down">
+        </a>
+    </div> *@
+</section>
+
+<!-- Sections -->
+<div class="sections" id="sections">
+    <div class="section">
+        <img src="~/images/users.jpg" alt="Users">
+        <h2>Users</h2>
+        <p>Discover our active users on this platform.</p>
+        <a asp-controller="Users" asp-action="Index">Learn more</a>
+    </div>
+    <div class="section">
+        <img src="~/images/books.jpg" alt="Books">
+        <h2>Books</h2>
+        <p>Find the latest books available here.</p>
+        <a asp-controller="Books" asp-action="Index">Learn more</a>
+    </div>
+    <div class="section">
+        <img src="~/images/courses.jpg" alt="Courses">
+        <h2>Courses</h2>
+        <p>Explore the most popular and new courses!</p>
+        <a asp-controller="Courses" asp-action="Index">Learn more</a>
+    </div>
 </div>
