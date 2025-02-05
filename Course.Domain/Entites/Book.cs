@@ -7,10 +7,10 @@ public class Book : IEntity
 {
 
     public int Id { get; set; }
-    public required string ImagePath { get; set; }
-    public required string Author { get; set; }
-    public required Genre Genre{ get; set; }
+    public string? ImagePath { get; set; }
+    public string? Author { get; set; }
+    public Genre Genre{ get; set; }
     public int PagesCount{ get; set; }
     public List<User> ReadUsers { get; set; } = [];
-    public required string Description { get; set; }
+    public string? Description { get; set; }
 }

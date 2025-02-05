@@ -5,11 +5,11 @@ namespace Course.Domain.Entites;
 public class User : IEntity
 {
     public int Id { get; set; }
-    public required string ImagePath { get; set; }
-    public required string Name { get; set; }
-    public required string Surname { get; set; }
-    public required DateTime Birthday { get; set; }
-    public required string Speciality { get; set; }
+    public string? ImagePath { get; set; }
+    public string? Name { get; set; }
+    public string? Surname { get; set; }
+    public DateTime Birthday { get; set; }
+    public string? Speciality { get; set; }
     public List<Book> ReadBooks { get; set; } = [];
 
 }

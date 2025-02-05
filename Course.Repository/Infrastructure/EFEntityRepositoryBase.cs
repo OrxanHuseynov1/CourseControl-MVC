@@ -6,6 +6,13 @@ namespace Course.Repository.Infrastructure;
 
 public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity> where TEntity : class, IEntity, new() where TContext : DbContext , new()
 {
+    private Course.DataAccess.Context.ApplicationDbContext context;
+
+    public EFEntityRepositoryBase(Course.DataAccess.Context.ApplicationDbContext context)
+    {
+        this.context = context;
+    }
+
     public void Add(TEntity entity)
     {
         using var context = new TContext();
@@ -33,9 +40,10 @@ public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEnti
     {
         using var context = new TContext();
         return context.Set<TEntity>().SingleOrDefault(filter)!;
-    }
+    }   
 
     public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter)
+    
     {
         using var context = new TContext();
         return filter is null
