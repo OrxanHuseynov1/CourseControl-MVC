@@ -11,9 +11,9 @@ namespace Course.WebUI.Controllers
             return View();
         }
 
-        public IActionResult GetUser()
+        public IActionResult Users()
         {
-            return RedirectToAction("Index","User");
+            return Redirect("/user");
         }
     }
 }

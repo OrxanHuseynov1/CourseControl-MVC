@@ -6,13 +6,6 @@ namespace Course.Repository.Infrastructure;
 
 public class EFEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity> where TEntity : class, IEntity, new() where TContext : DbContext , new()
 {
-    private Course.DataAccess.Context.ApplicationDbContext context;
-
-    public EFEntityRepositoryBase(Course.DataAccess.Context.ApplicationDbContext context)
-    {
-        this.context = context;
-    }
-
     public void Add(TEntity entity)
     {
         using var context = new TContext();

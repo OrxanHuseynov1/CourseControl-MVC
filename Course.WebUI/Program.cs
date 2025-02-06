@@ -34,8 +34,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(opt =>
 
 var app = builder.Build();
 
-
-
 if (!app.Environment.IsDevelopment())   
 {
     app.UseExceptionHandler("/Home/Error");
