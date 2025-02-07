@@ -1,0 +1,174 @@
+﻿@model BookListViewModel
+
+<!DOCTYPE html>
+
+@{
+    Layout = null;
+}
+
+<html>
+<head>
+    <title>Home</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-family: 'Segoe Script', 'Pacifico', 'Brush Script MT', cursive;
+            font-size: 50px;
+            color: darkgoldenrod;
+        }
+
+        .header a {
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: darkgoldenrod;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .header a:hover {
+            background-color: goldenrod;
+        }
+
+        .user-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .user-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .user-card img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        
+        .user-card p {
+            margin: 0 5;
+            font-size: 20px;
+            color: #666;
+        }
+        
+        .user-card h1 {
+            color: black;
+        }
+        
+        .user-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .user-card .buttons {
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-around;
+        }
+        
+        .user-card .buttons a {
+            padding: 10px 20px;
+            border-radius: 5px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .user-card .buttons .update-btn {
+            background-color: #007bff;
+        }
+        
+        .user-card .buttons .delete-btn {
+            background-color: #dc3545;
+        }
+        
+        .user-card .buttons .update-btn:hover {
+            background-color: #0056b3;
+        }
+        
+        .user-card .buttons .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        .combo-box {
+            padding: 8px 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: white;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-actions a {
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>All Users</h1>
+        <div class="header-actions">
+            <a href="@Url.Action("AddUser","AddUser")">Add User</a>
+            <form asp-controller="Home" asp-action="SortUsers" method="post" style="display: inline;">
+                <select id="sortOptions" name="sort" class="combo-box" onchange="this.form.submit()">
+                    <option>---</option>
+                    <option value="az">A-Z</option>
+                    <option value="za">Z-A</option>
+                </select>
+            </form>
+
+        </div>
+    </div>
+    <div class="user-grid">
+        @foreach (var user in Model.Books)
+        {
+            <div class="user-card">
+                <img src="@user.ImagePath" alt="User Image">
+                <h1>@user.Author</h1>
+                <p>Genre: @(DateTime.Now.Year - user.Genre)</p>
+                <p>Pages Count: @user.PagesCount</p>
+                <p>Description: @user.Description</p>
+            </div>
+
+
+        }
+    </div>
+</body>
+
+
+</html>
